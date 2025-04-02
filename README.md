@@ -1,6 +1,6 @@
 # Todo List App
 
-A simple, responsive todo list web application with user authentication.
+A simple, responsive todo list web application with user authentication and AI assistant integration.
 
 ## Features
 
@@ -22,25 +22,66 @@ A simple, responsive todo list web application with user authentication.
   - Task statistics (total and completed)
   - Mobile-friendly layout
 
+- **API Server**
+  - RESTful API endpoints
+  - User authentication
+  - Todo management
+  - Persistent storage
+
+- **AI Assistant Integration**
+  - Smithery configuration for AI assistants
+  - Tools for managing todos through AI
+
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- localStorage for data persistence
+- **Frontend**
+  - HTML5
+  - CSS3
+  - JavaScript (ES6+)
+  - localStorage for client-side persistence
+
+- **Backend**
+  - Node.js
+  - Express
+  - TypeScript
+  - File-based storage
+
+- **AI Integration**
+  - Smithery configuration
 
 ## Getting Started
 
-### Local Development
+### Frontend (Web App)
 
-1. Clone the repository
-2. Open `index.html` in your browser
+1. Open `index.html` in your browser to use the web interface
 
-### Using GitHub Pages
+### Backend (API Server)
 
-The application is hosted on GitHub Pages and can be accessed at [https://YOUR_USERNAME.github.io/todo-app](https://YOUR_USERNAME.github.io/todo-app).
+1. Install dependencies:
+   ```bash
+   cd todo-app/mcp-server
+   npm install
+   ```
+
+2. Build the TypeScript code:
+   ```bash
+   npm run build
+   ```
+
+3. Start the server:
+   ```bash
+   npm start
+   ```
+
+   The server will run on http://localhost:3001
+
+### AI Integration (Smithery)
+
+See [SMITHERY_README.md](SMITHERY_README.md) for detailed instructions on setting up and using the Smithery integration.
 
 ## How to Use
+
+### Web Interface
 
 1. **Register/Login**
    - Create a new account or login with existing credentials
@@ -55,14 +96,26 @@ The application is hosted on GitHub Pages and can be accessed at [https://YOUR_U
 3. **Logout**
    - Click the "Logout" button to end your session
 
+### API Endpoints
+
+The API server provides endpoints for:
+- User registration and authentication
+- Todo management (get, add, toggle, delete)
+
+See the [API Server README](mcp-server/README.md) for detailed documentation.
+
+### AI Assistant
+
+Once configured with Smithery, you can ask AI assistants to:
+- "Show me my todo list"
+- "Add a new task to buy groceries"
+- "Mark the task about groceries as complete"
+- "Delete the task about groceries"
+
 ## Data Storage
 
-All data is stored in your browser's localStorage:
-- User accounts
-- User sessions
-- Todo items (per user)
-
-**Note:** Clearing your browser data will remove all saved information.
+- **Web App**: Data is stored in your browser's localStorage
+- **API Server**: Data is stored in JSON files in the `mcp-server/data` directory
 
 ## License
 

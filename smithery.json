@@ -1,0 +1,117 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Smithery configuration for Todo App",
+  "baseUrl": "http://localhost:3001",
+  "auth": {
+    "type": "bearer",
+    "token": ""
+  },
+  "tools": [
+    {
+      "name": "register",
+      "description": "Register a new user",
+      "endpoint": "/api/register",
+      "method": "POST",
+      "parameters": {
+        "username": {
+          "type": "string",
+          "description": "Username for the new account"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password for the new account"
+        }
+      },
+      "required": ["username", "password"],
+      "auth": false,
+      "handler": {
+        "onSuccess": "function(response) { if (response.token) { this.auth.token = response.token; } return response; }"
+      }
+    },
+    {
+      "name": "login",
+      "description": "Login to the todo app",
+      "endpoint": "/api/login",
+      "method": "POST",
+      "parameters": {
+        "username": {
+          "type": "string",
+          "description": "Username"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password"
+        }
+      },
+      "required": ["username", "password"],
+      "auth": false,
+      "handler": {
+        "onSuccess": "function(response) { if (response.token) { this.auth.token = response.token; } return response; }"
+      }
+    },
+    {
+      "name": "logout",
+      "description": "Logout from the todo app",
+      "endpoint": "/api/logout",
+      "method": "POST",
+      "parameters": {},
+      "required": [],
+      "auth": true,
+      "handler": {
+        "onSuccess": "function(response) { this.auth.token = ''; return response; }"
+      }
+    },
+    {
+      "name": "get_todos",
+      "description": "Get the list of todos for the current user",
+      "endpoint": "/api/todos",
+      "method": "GET",
+      "parameters": {},
+      "required": [],
+      "auth": true
+    },
+    {
+      "name": "add_todo",
+      "description": "Add a new todo",
+      "endpoint": "/api/todos",
+      "method": "POST",
+      "parameters": {
+        "text": {
+          "type": "string",
+          "description": "Todo text"
+        }
+      },
+      "required": ["text"],
+      "auth": true
+    },
+    {
+      "name": "toggle_todo",
+      "description": "Toggle the completion status of a todo",
+      "endpoint": "/api/todos/{id}",
+      "method": "PUT",
+      "parameters": {
+        "id": {
+          "type": "number",
+          "description": "Todo ID"
+        }
+      },
+      "required": ["id"],
+      "auth": true
+    },
+    {
+      "name": "delete_todo",
+      "description": "Delete a todo",
+      "endpoint": "/api/todos/{id}",
+      "method": "DELETE",
+      "parameters": {
+        "id": {
+          "type": "number",
+          "description": "Todo ID"
+        }
+      },
+      "required": ["id"],
+      "auth": true
+    }
+  ]
+}
