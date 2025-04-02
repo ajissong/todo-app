@@ -1,0 +1,14 @@
+{
+  "demo": [
+    {
+      "id": 1,
+      "text": "Learn about REST APIs",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "text": "Build a todo app",
+      "completed": false
+    }
+  ]
+}

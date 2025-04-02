@@ -1,6 +1,6 @@
 # Todo List App
 
-A simple, responsive todo list web application with user authentication and AI assistant integration.
+A simple, responsive todo list web application with user authentication, API server, and AI assistant integration.
 
 ## Features
 
@@ -32,22 +32,13 @@ A simple, responsive todo list web application with user authentication and AI a
   - Smithery configuration for AI assistants
   - Tools for managing todos through AI
 
-## Technologies Used
+## Components
 
-- **Frontend**
-  - HTML5
-  - CSS3
-  - JavaScript (ES6+)
-  - localStorage for client-side persistence
+This project consists of three main components:
 
-- **Backend**
-  - Node.js
-  - Express
-  - TypeScript
-  - File-based storage
-
-- **AI Integration**
-  - Smithery configuration
+1. **Web Frontend** (`index.html`): Browser-based UI with localStorage persistence
+2. **API Server** (`mcp-server/`): Express server with RESTful endpoints
+3. **Smithery Integration** (`model.xml`, `features/`, etc.): AI assistant integration
 
 ## Getting Started
 
@@ -59,7 +50,7 @@ A simple, responsive todo list web application with user authentication and AI a
 
 1. Install dependencies:
    ```bash
-   cd todo-app/mcp-server
+   cd mcp-server
    npm install
    ```
 
@@ -74,6 +65,22 @@ A simple, responsive todo list web application with user authentication and AI a
    ```
 
    The server will run on http://localhost:3001
+
+### Demo Script
+
+To test the API service without using the web interface:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run the demo script:
+   ```bash
+   node demo.js
+   ```
+
+   This will demonstrate the full functionality of the todo service.
 
 ### AI Integration (Smithery)
 
@@ -104,6 +111,17 @@ The API server provides endpoints for:
 
 See the [API Server README](mcp-server/README.md) for detailed documentation.
 
+### API Service
+
+The JavaScript service provides the following operations:
+- `register(username, password)` - Register a new user account
+- `login(username, password)` - Log in with existing credentials
+- `logout()` - Log out from the current session
+- `getTodos()` - Get the list of todos for the current user
+- `addTodo(text)` - Add a new todo
+- `toggleTodo(id)` - Toggle the completion status of a todo
+- `deleteTodo(id)` - Delete a todo
+
 ### AI Assistant
 
 Once configured with Smithery, you can ask AI assistants to:
@@ -116,6 +134,15 @@ Once configured with Smithery, you can ask AI assistants to:
 
 - **Web App**: Data is stored in your browser's localStorage
 - **API Server**: Data is stored in JSON files in the `mcp-server/data` directory
+
+## Demo Account
+
+For testing purposes, a demo account is pre-configured:
+
+- Username: `demo`
+- Password: `password`
+
+This account comes with some sample todos.
 
 ## License
 

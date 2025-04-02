@@ -1,0 +1,6 @@
+{
+  "model": "model.xml",
+  "configurations": "configurations",
+  "features": "features",
+  "build": "build"
+}

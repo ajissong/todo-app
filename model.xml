@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://smithery.io/schemas/model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://smithery.io/schemas/model http://smithery.io/schemas/model.xsd">
+  <name>Todo App API</name>
+  <version>1.0.0</version>
+  <description>API for Todo List Application</description>
+  
+  <entity name="User">
+    <attribute name="username" type="string" />
+    <attribute name="password" type="string" />
+  </entity>
+  
+  <entity name="Todo">
+    <attribute name="id" type="number" />
+    <attribute name="text" type="string" />
+    <attribute name="completed" type="boolean" />
+    <reference name="user" entity="User" />
+  </entity>
+  
+  <service name="TodoService">
+    <operation name="register">
+      <parameter name="username" type="string" />
+      <parameter name="password" type="string" />
+      <return type="object" />
+    </operation>
+    
+    <operation name="login">
+      <parameter name="username" type="string" />
+      <parameter name="password" type="string" />
+      <return type="object" />
+    </operation>
+    
+    <operation name="logout">
+      <return type="object" />
+    </operation>
+    
+    <operation name="getTodos">
+      <return type="array" />
+    </operation>
+    
+    <operation name="addTodo">
+      <parameter name="text" type="string" />
+      <return type="object" />
+    </operation>
+    
+    <operation name="toggleTodo">
+      <parameter name="id" type="number" />
+      <return type="object" />
+    </operation>
+    
+    <operation name="deleteTodo">
+      <parameter name="id" type="number" />
+      <return type="object" />
+    </operation>
+  </service>
+</model>

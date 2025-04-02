@@ -2,62 +2,84 @@
 
 This document explains how to use the Smithery integration with the Todo App to enable AI assistants to interact with your todo list.
 
-## What is Smithery?
+## Project Structure
 
-Smithery is a tool that allows AI assistants like Claude to interact with APIs and services. It provides a way to define tools that the AI can use to perform actions on your behalf.
+The Smithery integration consists of the following components:
+
+- **Model Definition**: `model.xml` - Defines the data model and service operations
+- **API Configuration**: `configurations/todo-api.json` - Configures the API endpoints
+- **Service Implementation**: `features/todo-service.js` - Implements the service operations
+- **Demo Script**: `demo.js` - Demonstrates how to use the service
 
 ## Setup
 
-1. **Start the Todo App API Server**
+### 1. Start the Todo App API Server
 
-   ```bash
-   cd todo-app/mcp-server
-   npm install
-   npm run build
-   npm start
-   ```
+```bash
+cd todo-app/mcp-server
+npm install
+npm run build
+npm start
+```
 
-   This will start the API server on http://localhost:3001.
+This will start the API server on http://localhost:3001.
 
-2. **Install Smithery**
+### 2. Install Dependencies
 
-   Follow the installation instructions for Smithery from the official documentation.
+```bash
+cd todo-app
+npm install
+```
 
-3. **Configure Smithery**
+### 3. Run the Demo
 
-   Use the provided `smithery.json` file to configure Smithery:
+To test the integration without Smithery, you can run the demo script:
 
-   ```bash
-   smithery load todo-app/smithery.json
-   ```
+```bash
+cd todo-app
+node demo.js
+```
 
-## Using with AI Assistants
+This will demonstrate the full functionality of the todo service, including:
+- Logging in
+- Getting todos
+- Adding a new todo
+- Toggling a todo's completion status
+- Deleting a todo
+- Logging out
 
-Once Smithery is configured with the todo app, you can ask AI assistants to interact with your todo list. Here are some example prompts:
+## Smithery Integration
 
-- "Register a new account for me with username 'user123' and password 'securepass'"
-- "Log in to my todo app with username 'demo' and password 'password'"
-- "Show me my todo list"
-- "Add a new task to buy groceries"
-- "Mark the task about groceries as complete"
-- "Delete the task about groceries"
-- "Log out from my todo app"
+### Installing Smithery
 
-## Available Tools
+```bash
+npm install -g smithery-cli
+```
 
-The Smithery configuration provides the following tools:
+### Building the Smithery Project
 
-- **register** - Register a new user account
-- **login** - Log in with existing credentials
-- **logout** - Log out from the current session
-- **get_todos** - Get the list of todos for the current user
-- **add_todo** - Add a new todo
-- **toggle_todo** - Toggle the completion status of a todo
-- **delete_todo** - Delete a todo
+```bash
+cd todo-app
+npx smith build
+```
+
+Note: The Smithery build process is still in development. If you encounter issues, you can use the service implementation directly as shown in the demo script.
+
+## API Service
+
+The todo service provides the following operations:
+
+- **register(username, password)** - Register a new user account
+- **login(username, password)** - Log in with existing credentials
+- **logout()** - Log out from the current session
+- **getTodos()** - Get the list of todos for the current user
+- **addTodo(text)** - Add a new todo
+- **toggleTodo(id)** - Toggle the completion status of a todo
+- **deleteTodo(id)** - Delete a todo
 
 ## Authentication
 
-The Smithery configuration handles authentication automatically:
+The service handles authentication automatically:
 
 1. When you register or log in, the authentication token is stored
 2. Subsequent requests use this token for authentication
@@ -76,4 +98,4 @@ This account comes with some sample todos.
 
 - **Authentication errors**: Make sure you've logged in before trying to access, add, or modify todos
 - **Server connection issues**: Ensure the API server is running on http://localhost:3001
-- **Tool execution failures**: Check the error messages for details on what went wrong
+- **Module not found errors**: Make sure you've run `npm install` in both the `todo-app` and `todo-app/mcp-server` directories

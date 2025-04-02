@@ -1,0 +1,16 @@
+{
+  "name": "todo-app-smithery",
+  "version": "1.0.0",
+  "description": "Smithery integration for Todo App",
+  "main": "index.js",
+  "scripts": {
+    "build": "smith build",
+    "start": "node build/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "smithery-cli": "^0.5.1"
+  }
+}
